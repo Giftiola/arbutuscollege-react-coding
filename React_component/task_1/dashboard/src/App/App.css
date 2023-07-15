@@ -1,19 +1,12 @@
-@import '../utils/reset.css';
-
-* {
-  box-sizing: border-box;
+:root {
+  --main-color: #e01d3f;
 }
 
-html {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-h1 {
-  font-size: 2em;
-  font-weight: bold;
+.App {
+  border-bottom: 3px solid var(--main-color);
 }
 
 .App-body {
-  min-height: 75vh;
-  padding: 50px;
+  display: flex;
+  justify-content: center;
 }
