@@ -1,47 +1,34 @@
-import { shallow, mount } from "enzyme";
-import React from "react";
-import WithLogging from "./WithLogging";
-import Login from "../Login/Login";
+import React from 'react';
+import { mount } from 'enzyme';
+import WithLogging from './WithLogging';
+import Login from '../Login/Login';
 
-describe("<WithLogging />", () => {
-  it("calls console.log on mount and on unmount with Component when the wrapped element is pure html", () => {
+
+describe('WithLogging', () => {
+
+  it('console.log called on mount', () => {
+
     console.log = jest.fn();
-
-    const HOC = WithLogging(() => <p />);
-
-    const wrapper = mount(<HOC />);
-    expect(wrapper.exists()).toEqual(true);
-
-    expect(console.log).toHaveBeenNthCalledWith(
-      1,
-      `Component Component is mounted`
-    );
+    const TestWithLogging = WithLogging(() => <p />);
+    const wrapper = mount(<TestWithLogging />);
+    expect(console.log).toHaveBeenCalledWith(`Component Component is mounted`);
     wrapper.unmount();
-    expect(console.log).toHaveBeenNthCalledWith(
-      2,
+    expect(console.log).toHaveBeenCalledWith(
       `Component Component is going to unmount`
     );
-
-    jest.restoreAllMocks();
+    expect(console.log).toHaveBeenCalledTimes(2);
   });
-  it("calls console.log mount and on unmount with the name of the component when the wrapped element is the Login component. ", () => {
+
+  it('correctly logs component name', () => {
+
     console.log = jest.fn();
-
-    const HOC = WithLogging(Login);
-
-    const wrapper = mount(<HOC />);
-    expect(wrapper.exists()).toEqual(true);
-
-    expect(console.log).toHaveBeenNthCalledWith(
-      1,
-      `Component Login is mounted`
-    );
+    const LoginWithLogging = WithLogging(Login);
+    const wrapper = mount(<LoginWithLogging />);
+    expect(console.log).toHaveBeenCalledWith(`Component Login is mounted`);
     wrapper.unmount();
-    expect(console.log).toHaveBeenNthCalledWith(
-      2,
+    expect(console.log).toHaveBeenCalledWith(
       `Component Login is going to unmount`
     );
-
-    jest.restoreAllMocks();
+    expect(console.log).toHaveBeenCalledTimes(2);
   });
 });

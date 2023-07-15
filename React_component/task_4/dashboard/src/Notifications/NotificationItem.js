@@ -1,33 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function NotificationItem({ type, value, html, markAsRead, id }) {
-  let listItem;
-
-  if (value) {
-    listItem = (
-      <li data-notification-type={type} onClick={() => markAsRead(id)}>
-        {value}
-      </li>
-    );
-  } else {
-    listItem = (
-      <li
-        data-notification-type={type}
-        dangerouslySetInnerHTML={html}
-        onClick={() => markAsRead(id)}
-      ></li>
-    );
+class NotificationItem extends React.Component {
+  constructor (props) {
+    super(props)
   }
-  return listItem;
+  render(){
+
+    if (this.props.value) {
+      return (<li data-notification-type={this.props.type} onClick={() => {this.props.markAsRead(this.props.id)}} >{this.props.value}</li>);
+    } else {
+      return (
+        <li data-notification-type={this.props.type} dangerouslySetInnerHTML={this.props.html} onClick={() => {this.props.markAsRead(this.props.id)}}></li>
+      );
+    }
+  }
 }
 
 NotificationItem.defaultProps = {
   type: "default",
   value: "",
   html: {},
-  markAsRead: () => {},
-  id: NaN,
+  markAsRead: () => {}
 };
 
 NotificationItem.propTypes = {

@@ -1,12 +1,8 @@
-:root {
-  --main-color: #e01d3f;
-}
-
 .App {
-  border-bottom: 3px solid var(--main-color);
+  border-bottom: 4px solid var(--principal-color);
 }
 
 .App-body {
-  display: flex;
-  justify-content: center;
-}
+    display: flex;
+    justify-content: center;
+  }

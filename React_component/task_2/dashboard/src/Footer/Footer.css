@@ -1,13 +1,11 @@
 :root {
-  --main-color: #e01d3f;
+  --principal-color: #e14852;
 }
 
-.footer {
-  border-top: 3px solid var(--main-color);
-  width: 100%;
+.App-footer {
   display: flex;
   justify-content: center;
-  position: fixed;
-  bottom: 0;
+  border-top: 4px solid var(--principal-color);
   font-style: italic;
+  bottom: 0;
 }
